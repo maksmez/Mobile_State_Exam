@@ -3,6 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobile_State_Exam.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Color x:Key="GreenColor">#3BA639</Color>
+            <Color x:Key="BlueColor">#2966AD</Color>
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Style x:Key="Grid_color" TargetType="Grid">
+                <Setter Property="Padding" Value="35"></Setter>
+                <Setter Property="BackgroundColor" Value="White"></Setter>
+            </Style>
+            <Style x:Key="Header" TargetType ="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource Key=BlueColor}"></Setter>
+                <Setter Property="CornerRadius" Value="20"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+            </Style>
+            <Style x:Key="Blue_item" TargetType ="Frame">
+                <Setter Property="CornerRadius" Value="20"></Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource Key=BlueColor}"></Setter>
+            </Style>
+            <Style x:Key="Green_item" TargetType ="Frame">
+                <Setter Property="CornerRadius" Value="20"></Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource Key=GreenColor}"></Setter>
+                <Setter Property="Padding" Value="15"></Setter>
+            </Style>
+            <Style x:Key="Label_item" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="FontSize" Value="24"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}"></Setter>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
