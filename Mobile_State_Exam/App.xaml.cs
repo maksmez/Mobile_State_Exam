@@ -9,8 +9,8 @@ namespace Mobile_State_Exam
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new StartPage());
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()

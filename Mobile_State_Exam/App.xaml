@@ -23,12 +23,21 @@
             <Style x:Key="Green_item" TargetType ="Frame">
                 <Setter Property="CornerRadius" Value="20"></Setter>
                 <Setter Property="BackgroundColor" Value="{StaticResource Key=GreenColor}"></Setter>
-                <Setter Property="Padding" Value="15"></Setter>
+                <Setter Property="Padding" Value="13"></Setter>
             </Style>
             <Style x:Key="Label_item" TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Center"></Setter>
-                <Setter Property="FontSize" Value="24"></Setter>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="FontSize" Value="26"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource WhiteColor}"></Setter>
+            </Style>
+            <Style x:Key="FontIcon" TargetType="Label">
+                <Setter Property="FontFamily" Value="FontAwesome"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}"></Setter>
+                <Setter Property="FontSize" Value="35"></Setter>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="HorizontalOptions" Value="Start"></Setter>
+                <Setter Property="Margin" Value="20,0,0,0"></Setter>
+                <Setter Property="Margin" Value="20,0,0,0"></Setter>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

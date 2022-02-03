@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_State_Exam.SectionPage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid Style="{StaticResource Grid_color}" Padding="35" BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="135"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" Style="{StaticResource Header}"  >
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
+                <Label TextColor="{StaticResource WhiteColor}"  FontSize="36" VerticalOptions="Center" HorizontalOptions="Center" Text="MOBILE ЕГЭ"></Label>
+                <Label TextColor="{StaticResource WhiteColor}"  FontSize="18" VerticalOptions="Center" HorizontalOptions="Center" Text="Математика"></Label>
+            </StackLayout>
+        </Frame>
+
+        <ScrollView Grid.Row="1" Padding="0, 30, 0, 0">
+            <StackLayout Spacing="20"  >
+                <Frame  Style="{StaticResource Green_item}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Go_to_Theory"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal"   >
+                        <Label Style="{StaticResource FontIcon}" Text="&#xf02d;"></Label>
+                        <Label Style="{StaticResource Label_item}" Text="Теория"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="15,0,0,0"></Label>
+                    </StackLayout>
+                </Frame>
+                <Frame  Style="{StaticResource Green_item}">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Style="{StaticResource FontIcon}" Text="&#xf5d2;"></Label>
+                        <Label Style="{StaticResource Label_item}" Text="Шпаргалки"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="15,0,0,0"></Label>
+                    </StackLayout>
+                </Frame>
+                <Frame  Style="{StaticResource Green_item}">
+                    <StackLayout Orientation="Horizontal"  >
+                        <Label Style="{StaticResource FontIcon}" Text="&#xf02e;"></Label>
+                        <Label Style="{StaticResource Label_item}" Text="Термины"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="15,0,0,0"></Label>
+                    </StackLayout>
+                </Frame> 
+                <Frame  Style="{StaticResource Green_item}">
+                    <StackLayout Orientation="Horizontal"  >
+                        <Label Style="{StaticResource FontIcon}" Text="&#xf0ae;"></Label>
+                        <Label Style="{StaticResource Label_item}" Text="Тест по теме"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="15,0,0,0"></Label>
+                    </StackLayout>
+                </Frame>    
+                <Frame  Style="{StaticResource Green_item}">
+                    <StackLayout Orientation="Horizontal"  >
+                        <Label Style="{StaticResource FontIcon}" Text="&#xf19d;"></Label>
+                        <Label Style="{StaticResource Label_item}" Text="Тест ЕГЭ"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="15,0,0,0"></Label>
+                    </StackLayout>
+                </Frame>
+                <Frame  Style="{StaticResource Blue_item}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Go_to_StartPage"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal"  >
+                        <Label Style="{StaticResource FontIcon}" Text="&#xf015;"></Label>
+                        <Label Style="{StaticResource Label_item}" Text="На главную"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="15,0,0,0"></Label>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

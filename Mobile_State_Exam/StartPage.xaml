@@ -1,19 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mobile_State_Exam.MainPage">
-
-    <Grid Style="{StaticResource Grid_color}" Padding="35" BackgroundColor="White">
+             x:Class="Mobile_State_Exam.StartPage"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="sciences" Type="{x:Type x:String}">
+                <x:String>Математика</x:String>
+                <x:String>Русский язык</x:String>
+                <x:String>Английский язык</x:String>
+                <x:String>История</x:String>
+                <x:String>История</x:String>
+                <x:String>История</x:String>
+                <x:String>История</x:String>
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <Grid Style="{StaticResource Grid_color}" Padding="35" BackgroundColor="White" >
         <Grid.RowDefinitions>
             <RowDefinition Height="135"/>
             <RowDefinition Height="200"/>
-            <RowDefinition/>
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Frame Grid.Row="0" Style="{StaticResource Header}">
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
-                <Label  FontSize="36" VerticalOptions="Center" HorizontalOptions="Center" Text="MOBILE ЕГЭ"></Label>
-                <Label  FontSize="18" VerticalOptions="Center" HorizontalOptions="Center" Text="Выберите предмет"></Label>
+                <Label TextColor="{StaticResource WhiteColor}"  FontSize="36" VerticalOptions="Center" HorizontalOptions="Center" Text="MOBILE ЕГЭ"></Label>
+                <Label TextColor="{StaticResource WhiteColor}" FontSize="18" VerticalOptions="Center" HorizontalOptions="Center" Text="Выберите предмет"></Label>
             </StackLayout>
         </Frame>
        
@@ -26,9 +42,32 @@
             </Frame>    
         </StackLayout>
 
-        <ScrollView Grid.Row="2">
+       
+        <ListView HasUnevenRows="True"  ItemsSource="{Binding}"  Grid.Row="2" SeparatorVisibility="None"  ItemTapped="Go_to_SelectionPage" >
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <ViewCell Tapped="ViewCell_Tapped">
+                        <Grid   Padding="0,10,0,10" Grid.Row="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="55"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Frame Grid.Row="0" Style="{StaticResource Green_item}" HorizontalOptions="Fill" VerticalOptions="Center">
+                                <StackLayout  VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Label Style="{StaticResource Label_item}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Margin="0,-4,0,0"  Text="{Binding}"></Label>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+        </ListView>
+        
+        <!--<ScrollView Grid.Row="2">
             <StackLayout Spacing="25" >
-                <Frame  Style="{StaticResource Green_item}">
+                <Frame Style="{StaticResource Green_item}" >
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Go_to_SelectionPage"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
                     <Label Style="{StaticResource Label_item}" Text="Математика"></Label>
                 </Frame>
                 <Frame  Style="{StaticResource Green_item}">
@@ -38,6 +77,6 @@
                     <Label Style="{StaticResource Label_item}" Text="Английский язык"></Label>
                 </Frame>
             </StackLayout>
-        </ScrollView>
+        </ScrollView>-->
     </Grid>
 </ContentPage>

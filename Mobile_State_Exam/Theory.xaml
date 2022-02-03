@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_State_Exam.Theory"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid Style="{StaticResource Grid_color}">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" Style="{StaticResource Header}" >
+            <StackLayout  Orientation="Horizontal" Padding="0" >
+                <Label Style="{StaticResource FontIcon}" VerticalOptions="Center" HorizontalOptions="Start" Margin="0" Text="&#xf060;">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Go_to_SelectionPage" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label   TextColor="{StaticResource WhiteColor}"  FontSize="36" Margin="-10,-6,0,0" HorizontalOptions="CenterAndExpand" Text="Теория"></Label>
+            </StackLayout>
+        </Frame>
+
+
+        <ListView HasUnevenRows="True"  ItemsSource="{Binding}"  Grid.Row="1" SeparatorVisibility="None"  ItemTapped="ListView_ItemTapped" >
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell Tapped="ViewCell_Tapped">
+                        <Grid   Padding="0,10,0,10" Grid.Row="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="55"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Frame Grid.Row="0" Style="{StaticResource Green_item}" HorizontalOptions="Fill" HasShadow="True">
+                                <StackLayout  VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Label Style="{StaticResource Label_item}" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,-4,0,0" Text="{Binding}"></Label>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
