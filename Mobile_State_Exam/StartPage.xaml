@@ -19,10 +19,10 @@
     </ContentPage.Resources>
     
     
-    <Grid Style="{StaticResource Grid_color}" Padding="35" BackgroundColor="White" >
+    <Grid Style="{StaticResource Grid_color}" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="135"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="180"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -33,23 +33,27 @@
             </StackLayout>
         </Frame>
        
-        <StackLayout Grid.Row="1">
+        <StackLayout Grid.Row="1" >
             <Frame Style="{StaticResource Blue_item}">
                 <Label Style="{StaticResource Label_item}" Text="Привет, Александр!"></Label>
             </Frame>
             <Frame  Style="{StaticResource Green_item}">
-                <Label Style="{StaticResource Label_item}" Text="Статистика"></Label>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Go_to_Statistic"></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+                <Label Style="{StaticResource Label_item}" Text="Статистика">
+                </Label>
             </Frame>    
         </StackLayout>
 
-       
+
         <ListView HasUnevenRows="True"  ItemsSource="{Binding}"  Grid.Row="2" SeparatorVisibility="None"  ItemTapped="Go_to_SelectionPage" >
-                <ListView.ItemTemplate>
-                    <DataTemplate >
-                        <ViewCell Tapped="ViewCell_Tapped">
-                        <Grid   Padding="0,10,0,10" Grid.Row="3">
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell Tapped="ViewCell_Tapped">
+                        <Grid Grid.Row="3">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="55"></RowDefinition>
+                                <RowDefinition Height="65"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Frame Grid.Row="0" Style="{StaticResource Green_item}" HorizontalOptions="Fill" VerticalOptions="Center">
                                 <StackLayout  VerticalOptions="Center" HorizontalOptions="Center">
@@ -58,25 +62,8 @@
                             </Frame>
                         </Grid>
                     </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
-        
-        <!--<ScrollView Grid.Row="2">
-            <StackLayout Spacing="25" >
-                <Frame Style="{StaticResource Green_item}" >
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Go_to_SelectionPage"></TapGestureRecognizer>
-                    </Frame.GestureRecognizers>
-                    <Label Style="{StaticResource Label_item}" Text="Математика"></Label>
-                </Frame>
-                <Frame  Style="{StaticResource Green_item}">
-                    <Label Style="{StaticResource Label_item}" Text="Русский язык"></Label>
-                </Frame>
-                <Frame  Style="{StaticResource Green_item}">
-                    <Label Style="{StaticResource Label_item}" Text="Английский язык"></Label>
-                </Frame>
-            </StackLayout>
-        </ScrollView>-->
     </Grid>
 </ContentPage>

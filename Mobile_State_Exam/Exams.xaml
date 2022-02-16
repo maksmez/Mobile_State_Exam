@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_State_Exam.Exams"
+             NavigationPage.HasNavigationBar="False">
+    <Grid Style="{StaticResource Grid_color}">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" Style="{StaticResource Header}" >
+            <StackLayout  Orientation="Horizontal" Padding="0" >
+                <Label Style="{StaticResource FontIcon}" VerticalOptions="Center" HorizontalOptions="Start" Margin="0" Text="&#xf060;">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Go_to_SelectionPage" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label TextColor="{StaticResource WhiteColor}"  FontSize="36" Margin="-10,-6,0,0" HorizontalOptions="CenterAndExpand" Text="Тест ЕГЭ"></Label>
+            </StackLayout>
+        </Frame>
+
+        <ListView HasUnevenRows="True"  ItemsSource="{Binding}"  Grid.Row="1" SeparatorVisibility="None"  >
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell Tapped="ViewCell_Tapped">
+                        <Grid   Padding="0,10,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Frame Grid.Row="0" Style="{StaticResource Green_item}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Go_to_Exam_item"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                                <StackLayout>
+                                    <Label Style="{StaticResource Label_item}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding}"></Label>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage>

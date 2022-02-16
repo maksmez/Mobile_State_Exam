@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_State_Exam.Test_item"
+             NavigationPage.HasNavigationBar="False">
+    <Grid Style="{StaticResource Grid_color}">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" Style="{StaticResource Header}" >
+            <StackLayout  Orientation="Horizontal" Padding="0" >
+                <Label Style="{StaticResource FontIcon}" VerticalOptions="Center" HorizontalOptions="Start" Margin="0" Text="&#xf060;">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Go_to_SelectionPage" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label TextColor="{StaticResource WhiteColor}"  FontSize="36" Margin="-10,-6,0,0" HorizontalOptions="CenterAndExpand" Text="Вопрос №999"></Label>
+            </StackLayout>
+        </Frame>
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="0,30,0,0" >
+                <Label FontSize="24" TextColor="Black" Text="Найдите значение выражения:2+2="></Label>
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Grid.Row="2" Spacing="6">
+            <Frame BorderColor="Gray"   Padding="0" CornerRadius="20">
+                <Entry Margin="10,0" TextColor="Black" PlaceholderColor="Gray" Placeholder="Введите ответ"></Entry>
+            </Frame>
+            <Button Style="{StaticResource Button_Accept}"   Text="Проверить"></Button>
+            <Button Style="{StaticResource Button_Accept}" BackgroundColor="{StaticResource BlueColor}"   Text="Пропустить"></Button>
+        </StackLayout>
+    </Grid>
+</ContentPage>

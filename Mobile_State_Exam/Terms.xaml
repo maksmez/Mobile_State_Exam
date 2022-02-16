@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_State_Exam.Terms"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <Grid Style="{StaticResource Grid_color}">
+            <Grid.RowDefinitions >
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Frame Grid.Row="0" Style="{StaticResource Header}" >
+                <StackLayout  Orientation="Horizontal" Padding="0" >
+                    <Label Style="{StaticResource FontIcon}" VerticalOptions="Center" HorizontalOptions="Start" Margin="0" Text="&#xf060;">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Go_to_SelectionPage" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label   TextColor="{StaticResource WhiteColor}"  FontSize="36" Margin="-10,-6,0,0" HorizontalOptions="CenterAndExpand" Text="Термины"></Label>
+                </StackLayout>
+            </Frame>
+
+            <Frame Style="{StaticResource Header}" Padding="10" Grid.Row="1">
+                <Entry Placeholder="Введите название термина" Keyboard="Text" TextColor="White" ></Entry>
+            </Frame>
+            
+            <ListView Grid.Row="2" HasUnevenRows="True" Margin="0,20,0,0"  ItemsSource="{Binding}" SeparatorVisibility="None"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <ViewCell Tapped="ViewCell_Tapped">
+                            <Grid   Padding="0,10,0,10" Grid.Row="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                    <StackLayout>
+                                        <Label TextColor="Black" FontSize="20"  HorizontalTextAlignment="Start" Text="{Binding}"></Label>
+                                    </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

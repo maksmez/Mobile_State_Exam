@@ -16,14 +16,13 @@ namespace Mobile_State_Exam
         public Theory()
         {
             InitializeComponent();
-            List<string> themes = new List<string>() { "Тема1", "Тема2", "Тема3", "Операции с числами", "Очень при очень сложная тема", "Производные"};
+            List<string> themes = new List<string>() { "Логарифмы", "Тригонометрия", "Неравенства", "Операции с числами", "Очень при очень сложная тема", "Производные", "Сложные тригонометрические функции", "Система линейных алгебраических уравнений", "Дифференциальные уравнения", "Математика в экономике" };
             this.BindingContext = themes;
         }
 
         async private void Go_to_SelectionPage(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
-
         }
 
         private void ViewCell_Tapped(object sender, EventArgs e)
@@ -38,9 +37,9 @@ namespace Mobile_State_Exam
             }
         }
 
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        async private void Go_to_Theory_item(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new Theory_item());
         }
     }
    

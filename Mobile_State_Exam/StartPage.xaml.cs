@@ -37,5 +37,11 @@ namespace Mobile_State_Exam
             await Navigation.PushAsync(new SectionPage());
 
         }
+
+       async private void Go_to_Statistic(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Statistic());
+
+        }
     }
 }

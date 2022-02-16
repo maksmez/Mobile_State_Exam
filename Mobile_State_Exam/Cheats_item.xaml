@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_State_Exam.Cheats_item"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:gesture="clr-namespace:Mobile_State_Exam">
+    
+    <ScrollView Style="{StaticResource WhiteColor}">
+        <Grid x:Name="grid" Style="{StaticResource Grid_color}">
+            <Grid.RowDefinitions >
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Frame Grid.Row="0" Style="{StaticResource Header}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Style="{StaticResource FontIcon}" Grid.Column="0" Margin="0" VerticalOptions="Center" HorizontalOptions="Start" Text="&#xf060;">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label TextColor="{StaticResource WhiteColor}" Grid.Column="1"  FontSize="24" HorizontalTextAlignment="Center"  Text="Логарифмы"></Label>
+                </Grid>
+            </Frame>
+
+            <StackLayout Grid.Row="1">
+                <Image  Source="log.png"></Image>
+                <Image  Source="log.png"></Image>
+                <Image  Source="log.png"></Image>
+                <Image  Source="log.png"></Image>
+                <Image  Source="log.png"></Image>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

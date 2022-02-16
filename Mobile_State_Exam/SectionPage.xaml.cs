@@ -17,15 +17,35 @@ namespace Mobile_State_Exam
             InitializeComponent();
         }
 
-       async private void Go_to_StartPage(object sender, EventArgs e)
+        async private void Go_to_StartPage(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
 
         }
 
-       async private void Go_to_Theory(object sender, EventArgs e)
+        async private void Go_to_Theory(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Theory());
+        }
+
+        async private void Go_to_Cheats(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Cheats());
+        }
+
+        async private void Go_to_Terms(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Terms());
+        }
+
+        async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Tests());
+        }
+
+        async private void Go_to_Exams(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Exams());
         }
     }
 }

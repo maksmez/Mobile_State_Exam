@@ -21,18 +21,20 @@
             </StackLayout>
         </Frame>
 
-
-        <ListView HasUnevenRows="True"  ItemsSource="{Binding}"  Grid.Row="1" SeparatorVisibility="None"  ItemTapped="ListView_ItemTapped" >
+        <ListView HasUnevenRows="True"  ItemsSource="{Binding}"  Grid.Row="1" SeparatorVisibility="None"  >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <ViewCell Tapped="ViewCell_Tapped">
                         <Grid   Padding="0,10,0,10" Grid.Row="3">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="55"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Frame Grid.Row="0" Style="{StaticResource Green_item}" HorizontalOptions="Fill" HasShadow="True">
-                                <StackLayout  VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label Style="{StaticResource Label_item}" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,-4,0,0" Text="{Binding}"></Label>
+                            <Frame Grid.Row="0" Style="{StaticResource Green_item}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Go_to_Theory_item"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                                <StackLayout>
+                                    <Label Style="{StaticResource Label_item}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding}"></Label>
                                 </StackLayout>
                             </Frame>
                         </Grid>
