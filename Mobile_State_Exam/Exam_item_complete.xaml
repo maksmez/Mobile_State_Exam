@@ -41,6 +41,23 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout Margin="0,25">
+                    <Frame Grid.Row="0" Style="{StaticResource Header}" >
+                        <StackLayout  Orientation="Horizontal" Padding="0" >
+                            <Label TextColor="{StaticResource WhiteColor}"  FontSize="33" Margin="0,-3,0,0" HorizontalOptions="CenterAndExpand" Text="Оценка"></Label>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Margin="0,20,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                        <Label FontSize="24" Text="Верно:" TextColor="{StaticResource GreenColor}" VerticalOptions="Center"  HorizontalOptions="StartAndExpand"></Label>
+                        <Label FontSize="24" Text="14" TextColor="{StaticResource GreenColor}" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                        <Label FontSize="24" Text="Неверно:" TextColor="{StaticResource RedColor}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"></Label>
+                        <Label FontSize="24" Text="24" TextColor="{StaticResource RedColor}" VerticalOptions="Center" HorizontalOptions="End"></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ListView.Footer>
         </ListView>
         <StackLayout Grid.Row="2">
             <Button Style="{StaticResource Button_Accept}" Clicked="Go_to_SelectionPage" Text="Закрыть"></Button>

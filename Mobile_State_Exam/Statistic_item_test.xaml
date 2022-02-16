@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_State_Exam.Statistic_item_test"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid Style="{StaticResource Grid_color}">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" Style="{StaticResource Header}" >
+            <StackLayout  Orientation="Horizontal" Padding="0" >
+                <Label Style="{StaticResource FontIcon}" VerticalOptions="Center" HorizontalOptions="Start" Margin="0" Text="&#xf060;">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Go_to_Statistic" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label   TextColor="{StaticResource WhiteColor}"  FontSize="36" Margin="-10,-6,0,0" HorizontalOptions="CenterAndExpand" Text="По темам"></Label>
+            </StackLayout>
+        </Frame>
+        <ListView HasUnevenRows="True"  ItemsSource="{Binding}"  Grid.Row="1" SeparatorVisibility="None"  >
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell Tapped="ViewCell_Tapped" >
+                        <Grid Padding="0,10,0,10" Grid.Row="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Frame Grid.Row="0" Style="{StaticResource Blue_item}">
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.RowSpan="2" Grid.Column="0" FontSize="20" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding}"></Label>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="200" TextColor="{StaticResource GreenColor}"></Label>
+                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="/"></Label>
+                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="300" TextColor="{StaticResource GreenColor}"></Label>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="200%" TextColor="{StaticResource RedColor}"></Label>
+                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="/"></Label>
+                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="300%" TextColor="{StaticResource RedColor}"></Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+</ContentPage>

@@ -7,6 +7,8 @@
             <Color x:Key="GreenColor">#3BA639</Color>
             <Color x:Key="BlueColor">#2966AD</Color>
             <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Color x:Key="RedColor">#D02424</Color>
+            <Color x:Key="YellowColor">#F7CC33</Color>
             <Style x:Key="Grid_color" TargetType="Grid">
                 <Setter Property="Padding" Value="25"></Setter>
                 <Setter Property="BackgroundColor" Value="White"></Setter>

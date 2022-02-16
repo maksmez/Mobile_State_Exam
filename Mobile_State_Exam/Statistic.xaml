@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"   
              x:Class="Mobile_State_Exam.Statistic"
              NavigationPage.HasNavigationBar="False">
     <Grid Style="{StaticResource Grid_color}">
@@ -29,72 +30,72 @@
                         <Picker Margin="10,0" TextColor="Black" Title="Выберите предмет" TitleColor="Black"></Picker>
                     </Frame>
                 </StackLayout>
-                <StackLayout BackgroundColor="Red">
-                    <Grid BackgroundColor="Beige">
+                <StackLayout Padding="0,10">
+                    <Grid x:Name="grid1">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="140"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Frame Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource Header}" >
-                            <Label   TextColor="{StaticResource WhiteColor}"  FontSize="36" Margin="-10,-6,0,0" HorizontalOptions="CenterAndExpand" Text="По темам"></Label>
+                        <Frame  Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource Header}" >
+                            <Label   TextColor="{StaticResource WhiteColor}"  FontSize="31" Margin="-10,-3,0,0" HorizontalOptions="CenterAndExpand" Text="По темам"></Label>
                         </Frame>
-                        <!--<Image Grid.Row="1" Grid.Column="0" Source="log.png" WidthRequest="130"></Image>-->
-                        <Path Grid.Row="1" Stroke="Black" Fill="#CCCCFF" Aspect="Uniform" HorizontalOptions="Start">
-                            <Path.Data>
-                                <!-- FillRule doesn't need to be set, because EvenOdd is the default. -->
-                                <GeometryGroup>
-                                    <EllipseGeometry RadiusX="10" RadiusY="10" Center="75,75" />
-                                    <EllipseGeometry RadiusX="70" RadiusY="70" Center="75,75" />
-                                    <EllipseGeometry RadiusX="100" RadiusY="100" Center="75,75" />
-                                    <EllipseGeometry RadiusX="120" RadiusY="120" Center="75,75" />
-                                </GeometryGroup>
-                            </Path.Data>
-                        </Path>
-                        <FlexLayout Grid.Row="1" Grid.Column="1"  Direction="Column" JustifyContent="SpaceBetween">
+                        <forms:ChartView Margin="0" Grid.Row="1" x:Name="Chart1"   HeightRequest="140" />
+                        <Label x:Name="center_chart1" FontSize="22"  Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center"  ></Label>
+                        <FlexLayout Padding="0,40"  Grid.Row="1" Grid.Column="1"  Direction="Column" JustifyContent="SpaceBetween">
                             <StackLayout Orientation="Horizontal" >
                                 <Label  HorizontalOptions="StartAndExpand" FontSize="20" Text="Сдано" TextColor="{StaticResource GreenColor}"></Label>
                                 <Label HorizontalOptions="End" Text="111%" FontSize="20" TextColor="{StaticResource GreenColor}"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" >
-                                <Label HorizontalOptions="StartAndExpand" FontSize="20" Text="Не сдано" TextColor="Black"></Label>
-                                <Label HorizontalOptions="End" Text="122%" FontSize="20" TextColor="Black"></Label>
+                                <Label HorizontalOptions="StartAndExpand" FontSize="20" Text="Не сдано" TextColor="{StaticResource RedColor}"></Label>
+                                <Label HorizontalOptions="End" Text="122%" FontSize="20" TextColor="{StaticResource RedColor}"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" >
-                                <Label HorizontalOptions="StartAndExpand" FontSize="20" Text="Не изучено" TextColor="Black"></Label>
-                                <Label HorizontalOptions="End" Text="133%" FontSize="20" TextColor="Black"></Label>
+                                <Label HorizontalOptions="StartAndExpand" FontSize="20" Text="Не изучено" TextColor="{StaticResource YellowColor}"></Label>
+                                <Label HorizontalOptions="End" Text="133%" FontSize="20" TextColor="{StaticResource YellowColor}"></Label>
                             </StackLayout>
                         </FlexLayout>
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2">
-                            <Button Style="{StaticResource Button_Accept}" Clicked="Go_to_Statistic_Science" Text="Подробнее"></Button>
+                        <StackLayout  Grid.Row="2" Grid.ColumnSpan="2">
+                            <Button Style="{StaticResource Button_Accept}" Clicked="Go_to_Statistic_item_test" Text="Подробнее"></Button>
                         </StackLayout>
                     </Grid>
                 </StackLayout>
-                <!--<StackLayout BackgroundColor="Red">
-                    <Frame Grid.Row="0" Style="{StaticResource Header}" >
-                        <Label   TextColor="{StaticResource WhiteColor}"  FontSize="36" Margin="-10,-6,0,0" HorizontalOptions="CenterAndExpand" Text="По темам"></Label>
-                    </Frame>
-                    <StackLayout Orientation="Horizontal">
-                        <StackLayout x:Name="circle">
-                            <Image Source="log.png" WidthRequest="150"></Image>
+                <StackLayout Padding="0,10">
+                    <Grid x:Name="grid2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Frame  Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource Header}" >
+                            <Label   TextColor="{StaticResource WhiteColor}"  FontSize="31" Margin="-1,-3,0,0" HorizontalOptions="CenterAndExpand" Text="По вариантам ЕГЭ"></Label>
+                        </Frame>
+                        <forms:ChartView Margin="0" Grid.Row="1" x:Name="Chart2"   HeightRequest="140" />
+                        <Label x:Name="center_chart2" FontSize="22"  Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center"  ></Label>
+                        <FlexLayout Padding="0,65"  Grid.Row="1" Grid.Column="1"  Direction="Column" JustifyContent="SpaceBetween">
+                            <StackLayout Orientation="Horizontal" >
+                                <Label  HorizontalOptions="StartAndExpand" FontSize="20" Text="Сдано" TextColor="{StaticResource GreenColor}"></Label>
+                                <Label HorizontalOptions="End" Text="111%" FontSize="20" TextColor="{StaticResource GreenColor}"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" >
+                                <Label HorizontalOptions="StartAndExpand" FontSize="20" Text="Не сдано" TextColor="{StaticResource RedColor}"></Label>
+                                <Label HorizontalOptions="End" Text="122%" FontSize="20" TextColor="{StaticResource RedColor}"></Label>
+                            </StackLayout>
+                        </FlexLayout>
+                        <StackLayout  Grid.Row="2" Grid.ColumnSpan="2">
+                            <Button Style="{StaticResource Button_Accept}" Clicked="Go_to_Statistic_item_exam" Text="Подробнее"></Button>
                         </StackLayout>
-                        <StackLayout x:Name="numbers">
-                            <FlexLayout>
-                                <Label Text="Сдано" TextColor="Black"></Label>
-                                <Label Text="65%" TextColor="Black"></Label>
-                                <Label Text="Не сдано" TextColor="Black"></Label>
-                                <Label Text="65%" TextColor="Black"></Label>
-                                <Label Text="Не изучено" TextColor="Black"></Label>
-                                <Label Text="65%" TextColor="Black"></Label>
-                            </FlexLayout>
-                        </StackLayout>
-                    </StackLayout>
-                </StackLayout>-->
-
+                    </Grid>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </Grid>
