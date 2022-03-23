@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,12 +8,12 @@ namespace Mobile_State_Exam
     public partial class Exams : ContentPage
     {
         ViewCell lastCell;
+        Exam exam = new Exam();
 
-        public Exams()
+        public Exams(Science science)
         {
             InitializeComponent();
-            List<string> themes = new List<string>() { "Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7", "Вариант 8", "Вариант 9", "Вариант 10" };
-            this.BindingContext = themes;
+            this.BindingContext = exam.LoadData(science.id);
         }
 
        async private void Go_to_SelectionPage(object sender, EventArgs e)
@@ -37,10 +32,14 @@ namespace Mobile_State_Exam
                 lastCell = viewCell;
             }
         }
-
-        async private void Go_to_Exam_item(object sender, EventArgs e)
+       async private void list_ItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            await Navigation.PushAsync(new Exam_item());
+            Exam exam = args.SelectedItem as Exam;
+            if (exam != null)
+            {
+                list_exams.SelectedItem = null;
+                await Navigation.PushAsync(new Exam_item(exam));
+            }
         }
     }
 }

@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Mobile_State_Exam"
              x:Class="Mobile_State_Exam.SectionPage"
              NavigationPage.HasNavigationBar="False">
+   
     <Grid Style="{StaticResource Grid_color}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="135"/>
@@ -10,9 +11,9 @@
         </Grid.RowDefinitions>
 
         <Frame Grid.Row="0" Style="{StaticResource Header}"  >
-            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
+            <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
                 <Label TextColor="{StaticResource WhiteColor}"  FontSize="36" VerticalOptions="Center" HorizontalOptions="Center" Text="MOBILE ЕГЭ"></Label>
-                <Label TextColor="{StaticResource WhiteColor}"  FontSize="18" VerticalOptions="Center" HorizontalOptions="Center" Text="Математика"></Label>
+                <Label TextColor="{StaticResource WhiteColor}"  FontSize="18" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding Path = name}"></Label>
             </StackLayout>
         </Frame>
 
@@ -47,7 +48,7 @@
                 </Frame> 
                 <Frame  Style="{StaticResource Green_item}">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                        <TapGestureRecognizer Tapped="Go_to_Tests"></TapGestureRecognizer>
                     </Frame.GestureRecognizers>
                     <StackLayout Orientation="Horizontal"  >
                         <Label Style="{StaticResource FontIcon}" Text="&#xf0ae;"></Label>

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,12 +8,14 @@ namespace Mobile_State_Exam
     public partial class Terms : ContentPage
     {
         ViewCell lastCell;
-
-        public Terms()
+        Term term = new Term();
+        Science science_object = new Science();
+        public Terms(Science science)
         {
             InitializeComponent();
-            List<string> themes = new List<string>() { "Аксиома — утверждение, принимаемое 6ез доказательств.", "Аргумент (функции). Переменная величина (независимая), с помощью которой определяется значение функции.", "Гипербола. Незамкнутая кривая (состоит при помощи двух неограниченных ветвей). Термин появился благодаря Апполонию Пермскому (древнегреческий ученый).", "Интеграл. Основное понятие математического анализа. Возникло из-за того, что понадобилось измерять объемы и площади.", "Матрица. Прямоугольная таблица. Образуется при помощи множества числа (определенного). Включает в себя столбцы и строки (структура матрицы). Впервые термин «матрица» появилась у ученого Дж. Сильвестра." };
-            this.BindingContext = themes;
+            science_object.id = science.id;
+            int id_science = science.id;
+            this.BindingContext = term.LoadData(id_science) ;
         }
 
         private void ViewCell_Tapped(object sender, EventArgs e)
@@ -35,6 +32,12 @@ namespace Mobile_State_Exam
         async private void Go_to_SelectionPage(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchBar searchBar = (SearchBar)sender;
+            this.BindingContext = term.Search(searchBar.Text, science_object.id);
         }
     }
 }

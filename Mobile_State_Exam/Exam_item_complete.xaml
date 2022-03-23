@@ -26,12 +26,11 @@
                             </Grid.RowDefinitions>
                             <StackLayout BindingContext="{Binding}" >
                                 <Label FontSize="24" TextColor="Black" Text="Вопрос №1"></Label>
-                                <Label FontSize="20" TextColor="Black" Text="{Binding}"></Label>
-                                <Image Source="log.png" Margin="0,20"></Image>
+                                <Label FontSize="20" TextColor="Black" Text="{Binding description}"></Label>
                                 <StackLayout >
-                                    <Label FontSize="24" TextColor="Black" Text="Ответ: 4"></Label>
+                                    <Label FontSize="24" TextColor="Black" Text="{Binding answer, StringFormat='Ваш ответ: {0}'}"></Label>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label FontSize="24" TextColor="{StaticResource GreenColor}" Text="Ваш ответ: 4"></Label>
+                                        <Label FontSize="24" TextColor="{StaticResource GreenColor}" Text="{Binding answer, StringFormat='Ваш ответ: {0}'}"></Label>
                                         <Label Style="{StaticResource FontIcon}" FontSize="24" TextColor="{StaticResource GreenColor}" Text="&#xf00c;"></Label>
                                         <Label Style="{StaticResource FontIcon}" FontSize="24" TextColor="#D02424" Text="&#xf00d;"></Label>
                                     </StackLayout>

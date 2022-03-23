@@ -17,10 +17,10 @@
                         <TapGestureRecognizer Tapped="Go_to_Exams" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label TextColor="{StaticResource WhiteColor}"  FontSize="33" Margin="0,-3,0,0" HorizontalOptions="CenterAndExpand" Text="Вариант №999"></Label>
+                <Label x:Name="num_var" TextColor="{StaticResource WhiteColor}"  FontSize="33" Margin="0,-3,0,0" HorizontalOptions="CenterAndExpand" Text="Вариант №999"></Label>
             </StackLayout>
         </Frame>
-        <ListView Grid.Row="1"  HasUnevenRows="True"  ItemsSource="{Binding}"   SeparatorVisibility="None" SelectionMode="None" >
+        <ListView x:Name="listview_quest" Grid.Row="1"  HasUnevenRows="True"  ItemsSource="{Binding}"   SeparatorVisibility="None" SelectionMode="None" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -28,10 +28,9 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <StackLayout BindingContext="{Binding}" >
-                                <Label FontSize="24" TextColor="Black" Text="Вопрос №1"></Label>
-                                <Label FontSize="20" TextColor="Black" Text="{Binding}"></Label>
-                                <Image Source="log.png" Margin="0,20"></Image>
+                            <StackLayout >
+                                <Label x:Name="number" FontSize="24" TextColor="Black"  Text="Вопрос"></Label>
+                                <Label FontSize="20" TextColor="Black" Text="{Binding description}"></Label>
                                 <Frame BorderColor="Gray"   Padding="0" CornerRadius="20">
                                     <Entry Margin="10,0" TextColor="Black" PlaceholderColor="Gray" Placeholder="Введите ответ"></Entry>
                                 </Frame>

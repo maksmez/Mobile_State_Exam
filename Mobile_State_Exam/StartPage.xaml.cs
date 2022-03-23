@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Mobile_State_Exam
@@ -11,15 +7,24 @@ namespace Mobile_State_Exam
     public partial class StartPage : ContentPage
     {
         ViewCell lastCell;
+        Science science = new Science();
         public StartPage()
         {
             InitializeComponent();
-            List<string> sciences = new List<string>() {"Математка","Русский язык", "Истроия", "Истроия", "Истроия", "Истроия", "Истроия", "Истроия", "Истроия", "Истроия" };
-            this.BindingContext = sciences;
-           
+            BindingContext = science.LoadData();
+        }
+        async protected override void OnAppearing()
+        {
+            if (Preferences.Get("name", "user") == "user")
+            {
+                string result = await DisplayPromptAsync("Привет!", "Введи свое имя!");
+                Preferences.Set("name", result);
+            }
+            base.OnAppearing();
+            user.Text = "Привет, " + Preferences.Get("name", "user") + "!";
         }
 
-       
+
         private void ViewCell_Tapped(object sender, EventArgs e)
         {
             if (lastCell != null)
@@ -32,16 +37,30 @@ namespace Mobile_State_Exam
             }
         }
 
-        async private void Go_to_SelectionPage(object sender, ItemTappedEventArgs e)
-        {
-            await Navigation.PushAsync(new SectionPage());
-
-        }
-
-       async private void Go_to_Statistic(object sender, EventArgs e)
+        async private void Go_to_Statistic(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Statistic());
+        }
 
+
+        async private void Go_to_SelectionPage(object sender, SelectedItemChangedEventArgs args)
+        {
+
+            Science science = args.SelectedItem as Science;
+            if (science != null)
+            {
+                list.SelectedItem = null;
+                await Navigation.PushAsync(new SectionPage(science));
+            }
+        }
+
+       async private void change_user_name(object sender, EventArgs e)
+        {
+            string result = await DisplayPromptAsync("", "Введи свое имя!");
+            if (result == null|| result == "" || result == " ")
+                return;
+            Preferences.Set("name", result);
+            user.Text = "Привет, " + Preferences.Get("name", "user") + "!";
         }
     }
 }

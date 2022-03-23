@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,15 +8,16 @@ namespace Mobile_State_Exam
     public partial class Tests : ContentPage
     {
         ViewCell lastCell;
-
-        public Tests()
+        Science science_object = new Science();
+        Theme them = new Theme();
+        public Tests(Science science)
         {
             InitializeComponent();
-            List<string> themes = new List<string>() { "Логарифмы", "Тригонометрия", "Неравенства", "Операции с числами", "Очень при очень сложная тема", "Производные", "Сложные тригонометрические функции", "Система линейных алгебраических уравнений", "Дифференциальные уравнения", "Математика в экономике" };
-            this.BindingContext = themes;
+            science_object.id = science.id;
+            this.BindingContext = them.LoadData(science_object.id);
         }
 
-       async private void Go_to_SelectionPage(object sender, EventArgs e)
+        async private void Go_to_SelectionPage(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
@@ -37,9 +33,26 @@ namespace Mobile_State_Exam
                 lastCell = viewCell;
             }
         }
-       async private void Go_to_Test_item(object sender, EventArgs e)
+        async private void list_ItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            await Navigation.PushAsync(new Test_item());
+            if (args.SelectedItemIndex >= 0)
+            {
+                bool result = await DisplayAlert("Внимание!", "Тест на 15 вопросов.\nДля прохождения теста необходимо набрать больше 80%.", "Начать", "Отмена");
+                if (result)
+                {
+                    Theme theme = args.SelectedItem as Theme;
+                    if (theme != null)
+                    {
+                        list_tests.SelectedItem = null;
+                        await Navigation.PushAsync(new Test_item(theme));
+                    }
+                }
+                else
+                {
+                    list_tests.SelectedItem = null;
+                }
+            }
         }
+            
     }
 }

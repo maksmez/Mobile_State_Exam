@@ -9,16 +9,20 @@ using Xamarin.Forms.Xaml;
 
 namespace Mobile_State_Exam
 {
+    
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class Cheats : ContentPage
     {
         ViewCell lastCell;
-
-        public Cheats()
+        Science science_object = new Science();
+        Cheat cheat = new Cheat();
+        public Cheats(Science science)
         {
             InitializeComponent();
-            List<string> themes = new List<string>() { "Логарифмы", "Тригонометрия", "Неравенства", "Операции с числами", "Очень при очень сложная тема", "Производные", "Сложные тригонометрические функции", "Система линейных алгебраических уравнений", "Дифференциальные уравнения", "Математика в экономике" };
-            this.BindingContext = themes;
+            science_object.id = science.id;
+            this.BindingContext = cheat.LoadData(science_object.id);
+            
         }
 
        async private void Go_to_SelectionPage(object sender, EventArgs e)
@@ -36,9 +40,16 @@ namespace Mobile_State_Exam
                 lastCell = viewCell;
             }
         }
-        async private void Go_to_Cheats_item(object sender, EventArgs e)
+        async private void list_ItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            await Navigation.PushAsync(new Cheats_item());
+            Cheat cheat = args.SelectedItem as Cheat;
+            if (cheat != null)
+            {
+                // Снимаем выделение
+                list_cheat.SelectedItem = null;
+                // Переходим на страницу редактирования элемента 
+                await Navigation.PushAsync(new Cheats_item(cheat));
+            }
         }
     }
 }

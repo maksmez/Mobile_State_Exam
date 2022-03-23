@@ -21,7 +21,7 @@
             </StackLayout>
         </Frame>
 
-        <ListView HasUnevenRows="True"  ItemsSource="{Binding}"  Grid.Row="1" SeparatorVisibility="None"  >
+        <ListView x:Name="list_cheat" HasUnevenRows="True" ItemSelected="list_ItemSelected"  ItemsSource="{Binding}"  Grid.Row="1" SeparatorVisibility="None"  >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <ViewCell Tapped="ViewCell_Tapped" >
@@ -30,11 +30,8 @@
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Frame Grid.Row="0" Style="{StaticResource Green_item}">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Go_to_Cheats_item"></TapGestureRecognizer>
-                                </Frame.GestureRecognizers>
                                 <StackLayout>
-                                    <Label Style="{StaticResource Label_item}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding}"></Label>
+                                    <Label Style="{StaticResource Label_item}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding Path=name}"></Label>
                                 </StackLayout>
                             </Frame>
                         </Grid>

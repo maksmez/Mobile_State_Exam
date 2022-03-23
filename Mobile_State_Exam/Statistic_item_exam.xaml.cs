@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,12 +9,13 @@ namespace Mobile_State_Exam
     public partial class Statistic_item_exam : ContentPage
     {
         ViewCell lastCell;
+        Exam exam = new Exam();
+        ObservableCollection<Exam> exam_list;
 
-        public Statistic_item_exam()
+        public Statistic_item_exam(ObservableCollection<Exam> list_exam)
         {
             InitializeComponent();
-            List<string> themes = new List<string>() { "Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7", "Вариант 8", "Вариант 9", "Вариант 10" };
-            this.BindingContext = themes;
+            this.BindingContext = list_exam;
         }
 
         async private void Go_to_Statistic(object sender, EventArgs e)

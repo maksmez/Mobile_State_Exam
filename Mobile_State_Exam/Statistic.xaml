@@ -27,7 +27,7 @@
                         <Label Style="{StaticResource Label_item}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="Выберите предмет"></Label>
                     </Frame>
                     <Frame BorderColor="Gray"   Padding="0" CornerRadius="20">
-                        <Picker Margin="10,0" TextColor="Black" Title="Выберите предмет" TitleColor="Black"></Picker>
+                        <Picker x:Name="picker" SelectedIndexChanged="picker_SelectedIndexChanged" Margin="10,0" TextColor="Black" Title="Выберите предмет" TitleColor="Black"></Picker>
                     </Frame>
                 </StackLayout>
                 <StackLayout Padding="0,10">
@@ -49,15 +49,15 @@
                         <FlexLayout Padding="0,40"  Grid.Row="1" Grid.Column="1"  Direction="Column" JustifyContent="SpaceBetween">
                             <StackLayout Orientation="Horizontal" >
                                 <Label  HorizontalOptions="StartAndExpand" FontSize="20" Text="Сдано" TextColor="{StaticResource GreenColor}"></Label>
-                                <Label HorizontalOptions="End" Text="111%" FontSize="20" TextColor="{StaticResource GreenColor}"></Label>
+                                <Label x:Name="pass" HorizontalOptions="End" Text="111%" FontSize="20" TextColor="{StaticResource GreenColor}"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" >
                                 <Label HorizontalOptions="StartAndExpand" FontSize="20" Text="Не сдано" TextColor="{StaticResource RedColor}"></Label>
-                                <Label HorizontalOptions="End" Text="122%" FontSize="20" TextColor="{StaticResource RedColor}"></Label>
+                                <Label x:Name="wrong" HorizontalOptions="End" Text="122%" FontSize="20" TextColor="{StaticResource RedColor}"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" >
                                 <Label HorizontalOptions="StartAndExpand" FontSize="20" Text="Не изучено" TextColor="{StaticResource YellowColor}"></Label>
-                                <Label HorizontalOptions="End" Text="133%" FontSize="20" TextColor="{StaticResource YellowColor}"></Label>
+                                <Label x:Name="none" HorizontalOptions="End" Text="133%" FontSize="20" TextColor="{StaticResource YellowColor}"></Label>
                             </StackLayout>
                         </FlexLayout>
                         <StackLayout  Grid.Row="2" Grid.ColumnSpan="2">
@@ -84,11 +84,11 @@
                         <FlexLayout Padding="0,65"  Grid.Row="1" Grid.Column="1"  Direction="Column" JustifyContent="SpaceBetween">
                             <StackLayout Orientation="Horizontal" >
                                 <Label  HorizontalOptions="StartAndExpand" FontSize="20" Text="Сдано" TextColor="{StaticResource GreenColor}"></Label>
-                                <Label HorizontalOptions="End" Text="111%" FontSize="20" TextColor="{StaticResource GreenColor}"></Label>
+                                <Label x:Name="exam_pas" HorizontalOptions="End" Text="111%" FontSize="20" TextColor="{StaticResource GreenColor}"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" >
                                 <Label HorizontalOptions="StartAndExpand" FontSize="20" Text="Не сдано" TextColor="{StaticResource RedColor}"></Label>
-                                <Label HorizontalOptions="End" Text="122%" FontSize="20" TextColor="{StaticResource RedColor}"></Label>
+                                <Label x:Name="exam_wrong" HorizontalOptions="End" Text="122%" FontSize="20" TextColor="{StaticResource RedColor}"></Label>
                             </StackLayout>
                         </FlexLayout>
                         <StackLayout  Grid.Row="2" Grid.ColumnSpan="2">

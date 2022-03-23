@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Microsoft.EntityFrameworkCore;
+using Xamarin.Essentials;
 
 namespace Mobile_State_Exam
 {
@@ -8,13 +10,23 @@ namespace Mobile_State_Exam
     {
         public App()
         {
+            //per();
             InitializeComponent();
             MainPage = new NavigationPage(new StartPage());
-            //MainPage = new MainPage();
+            using (var db = new Context())
+            {
+                db.Database.Migrate();
+            }
         }
 
+        async void per()
+        {
+            var per = await Permissions.RequestAsync<Permissions.NetworkState>();
+
+        }
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()

@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Mobile_State_Exam"
              x:Class="Mobile_State_Exam.Statistic_item_exam"
              NavigationPage.HasNavigationBar="False">
-
+    <ContentPage.Resources>
+        <local:Converter_score x:Key="Converter_score" />
+    </ContentPage.Resources>
     <Grid Style="{StaticResource Grid_color}">
         <Grid.RowDefinitions >
             <RowDefinition Height="80"/>
@@ -39,16 +41,34 @@
                                             <ColumnDefinition Width="150"/>
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.RowSpan="2" Grid.Column="0" FontSize="20" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding}"></Label>
+                                        <Label Grid.RowSpan="2" Grid.Column="0" FontSize="20" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding Path=name_option}"></Label>
                                         <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
-                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="200" TextColor="{StaticResource GreenColor}"></Label>
-                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="/"></Label>
-                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="300" TextColor="{StaticResource GreenColor}"></Label>
+                                            <Label x:Name="correct" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding Path=count_correct, StringFormat='{0}/20'}" >
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Path=total_score, Converter={StaticResource Converter_score}}" Value="correct">
+                                                        <Setter Property="TextColor" Value="{StaticResource GreenColor}"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Path=total_score, Converter={StaticResource Converter_score}}" Value="wrong">
+                                                        <Setter Property="TextColor" Value="{StaticResource RedColor}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                         </StackLayout>
                                         <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
-                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="200%" TextColor="{StaticResource RedColor}"></Label>
-                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="/"></Label>
-                                            <Label FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="300%" TextColor="{StaticResource RedColor}"></Label>
+                                            <Label x:Name="total" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding Path=total_score, StringFormat='{0}%'}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Path=total_score, Converter={StaticResource Converter_score}}" Value="correct">
+                                                        <Setter Property="TextColor" Value="{StaticResource GreenColor}"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Path=total_score, Converter={StaticResource Converter_score}}" Value="wrong">
+                                                        <Setter Property="TextColor" Value="{StaticResource RedColor}"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Path=total_score, Converter={StaticResource Converter_score}}" Value="none">
+                                                        <Setter Property="TextColor" Value="{StaticResource RedColor}"></Setter>
+                                                        <Setter Property="Text" Value="Не решен"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                         </StackLayout>
                                     </Grid>
                                 </StackLayout>

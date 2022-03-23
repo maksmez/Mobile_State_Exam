@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Mobile_State_Exam"
              x:Class="Mobile_State_Exam.Terms"
              NavigationPage.HasNavigationBar="False">
+
     <Grid Style="{StaticResource Grid_color}">
         <Grid.RowDefinitions >
             <RowDefinition Height="80"/>
@@ -22,10 +23,10 @@
         </Frame>
 
         <Frame Style="{StaticResource Header}" Padding="10" Grid.Row="1">
-            <Entry Placeholder="Введите название термина" Keyboard="Text" TextColor="White" ></Entry>
+            <SearchBar TextChanged="SearchBar_TextChanged" Placeholder="Введите название термина" Keyboard="Text" TextColor="White"></SearchBar>
         </Frame>
 
-        <ListView Grid.Row="2" HasUnevenRows="True" Margin="0,20,0,0"  ItemsSource="{Binding}" SeparatorVisibility="None"  >
+        <ListView x:Name="searchResults" ItemsSource="{Binding}" Grid.Row="2" HasUnevenRows="True" Margin="0,20,0,0" SeparatorVisibility="None"  >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <ViewCell Tapped="ViewCell_Tapped">
@@ -34,7 +35,8 @@
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <StackLayout>
-                                <Label TextColor="Black" FontSize="20"  HorizontalTextAlignment="Start" Text="{Binding}"></Label>
+                                <Label  TextColor="White" HorizontalTextAlignment="Center" BackgroundColor="{StaticResource GreenColor}" FontSize="20"  Text="{Binding name}"></Label>
+                                <Label TextColor="Black" FontSize="20"  HorizontalTextAlignment="Start" Text="{Binding description}"></Label>
                             </StackLayout>
                         </Grid>
                     </ViewCell>
